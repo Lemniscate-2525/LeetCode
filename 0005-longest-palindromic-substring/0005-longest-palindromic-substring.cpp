@@ -4,7 +4,7 @@ public:
 
         string t = "^";
 
-        for(char ch : s) {
+        for (char ch : s) {
             t += "#";
             t += ch;
         }
@@ -17,37 +17,37 @@ public:
         int r = 0;
         int c = 0;
 
-        for(int i=1; i<n-1; i++) {
+        for (int i = 1; i < n - 1; i++) {
 
-            int m = 2*c - i;
+            int m = 2 * c - i;
 
-            if(i < r) p[i] = min(p[m], r-i);
-    
-            while(t[i + (p[i] + 1)] == t[i - (p[i] + 1)]) {
+            if (i < r)
+                p[i] = min(p[m], r - i);
+
+            while (t[i + (p[i] + 1)] == t[i - (p[i] + 1)]) {
                 p[i]++;
             }
 
-            if(i + p[i] > r) {
+            if (i + p[i] > r) {
                 c = i;
                 r = p[i] + i;
             }
         }
 
-            int ml = 0;
-            int cent = 0;
+        int ml = 0;
+        int cent = 0;
 
-            for(int i=1; i<n-1; i++) {
+        for (int i = 1; i < n - 1; i++) {
 
-                if(p[i] > ml) {
-                    ml = p[i];
-                    c = i;
-                }
+            if (p[i] > ml) {
+                ml = p[i];
+                c = i;
             }
+        }
 
-        int start = (c - ml)/2;
+        int start = (c - ml) / 2;
 
         return s.substr(start, ml);
-        
     }
 };
 
