@@ -8,7 +8,7 @@ public:
             t += "#";
             t += ch;
         }
-
+ // Manacher's Algorithm. 
         t += "#$";
 
         int n = t.size();
