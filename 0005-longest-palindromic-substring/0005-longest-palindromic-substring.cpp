@@ -1,36 +1,52 @@
 class Solution {
 public:
-    string gen_from_centre(string &s, int l, int r) {
-
-        while(l >= 0 && r < s.size() && s[l] == s[r]){
-            l--;
-            r++;
-        }
-
-        return s.substr(l+1, r-l-1);
-    }
-
     string longestPalindrome(string s) {
-        
-        int n = s.size();
 
-        string ans = "";
+        string t = "^";
 
-        for(int i=0; i<n; i++){
+        for(char ch : s) {
+            t += "#";
+            t += ch;
+        }
 
-            string odd = gen_from_centre(s, i , i);
-            string even = gen_from_centre(s, i, i+1);
+        t += "#$";
 
-            if(odd.size() > ans.size()){
-                ans = odd;
+        int n = t.size();
+        vector<int> p(n, 0);
+
+        int r = 0;
+        int c = 0;
+
+        for(int i=1; i<n-1; i++) {
+
+            int m = 2*c - i;
+
+            if(i < r) p[i] = min(p[m], r-i);
+    
+            while(t[i + (p[i] + 1)] == t[i - (p[i] + 1)]) {
+                p[i]++;
             }
 
-            if(even.size() > ans.size()){
-                ans = even;
+            if(i + p[i] > r) {
+                c = i;
+                r = p[i] + i;
             }
         }
 
-        return ans;
+            int ml = 0;
+            int cent = 0;
+
+            for(int i=1; i<n-1; i++) {
+
+                if(p[i] > ml) {
+                    ml = p[i];
+                    c = i;
+                }
+            }
+
+        int start = (c - ml)/2;
+
+        return s.substr(start, ml);
         
     }
 };
