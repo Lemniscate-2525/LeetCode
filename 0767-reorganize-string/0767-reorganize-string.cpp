@@ -10,28 +10,27 @@ public:
 
         vector<int> freq(26, 0);
 
-        for (char ch : s) {
+        for(char ch : s) {
 
-            int x = ch - 'a';
-
+            int x = ch - 'a';  // ascii value
             freq[x]++;
 
-            if (freq[x] > mf) {
+            if(freq[x] > mf) {
 
                 maxi = x;
                 mf = freq[x];
+
             }
         }
 
-        if (mf > (n + 1) / 2)
+        if(mf > (n+1)/2)
             return "";
 
         int idx = 0;
 
-        while (freq[maxi] > 0) {
+        while(freq[maxi] > 0) {
 
-            if (idx >= n)
-                idx = 1;
+            if(idx >= n) idx = 1;
 
             ans[idx] = 'a' + maxi;
             freq[maxi]--;
@@ -39,23 +38,23 @@ public:
             idx += 2;
         }
 
-        for (char ch : s) {
+        for(int i=0; i<26; i++) {
 
-            int x = ch - 'a';
+            while(freq[i] > 0) {
 
-            while (freq[x] > 0) {
-
-                if (idx >= n)
+                if(idx >= n)
                     idx = 1;
 
-                ans[idx] = 'a' + x;
-                freq[x]--;
+                ans[idx] = 'a' + i;
+                freq[i]--;
 
                 idx += 2;
+                
             }
         }
 
         return ans;
+
     }
 };
 
