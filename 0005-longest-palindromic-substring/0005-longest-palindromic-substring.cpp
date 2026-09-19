@@ -8,7 +8,7 @@ public:
             t += "#";
             t += ch;
         }
- // Manacher's Algorithm. 
+// Manacher's Algorithm. 
         t += "#$";
 
         int n = t.size();
@@ -17,14 +17,14 @@ public:
         int r = 0;
         int c = 0;
 
-        for (int i = 1; i < n - 1; i++) {
+        for(int i=1; i<n-1; i++) {
 
-            int m = 2 * c - i;
+            int m = 2*c - i;
 
-            if (i < r)
-                p[i] = min(p[m], r - i);
+            if(i < r)
+                p[i] = min(p[m], r-i);
 
-            while (t[i + (p[i] + 1)] == t[i - (p[i] + 1)]) {
+            while(t[i + (p[i] + 1)] == t[i - (p[i] + 1)]) {
                 p[i]++;
             }
 
@@ -37,7 +37,7 @@ public:
         int ml = 0;
         int cent = 0;
 
-        for (int i = 1; i < n - 1; i++) {
+        for (int i=1; i<n-1; i++) {
 
             if (p[i] > ml) {
                 ml = p[i];
@@ -45,7 +45,7 @@ public:
             }
         }
 
-        int start = (c - ml) / 2;
+        int start = (c-ml) / 2;
 
         return s.substr(start, ml);
     }
