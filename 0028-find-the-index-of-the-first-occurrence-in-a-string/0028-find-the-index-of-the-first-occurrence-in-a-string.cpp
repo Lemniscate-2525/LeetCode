@@ -10,13 +10,13 @@ public:
         for(int i=0; i<n; i++) {
 
             if(h[i] == ned[j]) {
-                j++;
+                j++; // keep inc needle if equal char are being found
             } else {
-                i = i - j;
-                j = 0;
+                i = i - j;  // if not, then change/update new start ie. i to i-j.
+                j = 0; // update start of needle ie. j back to 0. 
             }
 
-            if(j == m) {
+            if(j == m) { // if j reaches length of needle then we return index of first occurrence of needle. 
                 return i - m + 1;
             }
         }
