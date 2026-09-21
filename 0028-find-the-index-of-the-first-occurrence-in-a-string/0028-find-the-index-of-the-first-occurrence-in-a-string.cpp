@@ -1,23 +1,54 @@
 class Solution {
 public:
-    int strStr(string h, string ned) {
-        
-        int n = h.size();
-        int m = ned.size();
+    int strStr(string h, string nee) {
 
+        int n = h.size();
+        int m = nee.size();
+
+        if(m == 0) return 0;
+
+        vector<int> lps(m, 0);
+
+        int i = 1;
+        int len = 0;
+
+        while(i < m) {  // for loop won't work here as we need i++ only in case 3. 
+
+            if(nee[i] == nee[len]) {
+                lps[i] = len + 1;
+                i++;
+                len++;
+
+            } else {
+
+                if(len != 0){
+                    len = lps[len - 1];
+                } else {
+                    lps[i] = 0;
+                    i++;
+                }
+            }
+        }
+
+        i = 0;
         int j = 0;
 
-        for(int i=0; i<n; i++) {
+        while(i < n){
 
-            if(h[i] == ned[j]) {
-                j++; // keep inc needle if equal char are being found
-            } else {
-                i = i - j;  // if not, then change/update new start ie. i to i-j.
-                j = 0; // update start of needle ie. j back to 0. 
+            if(h[i] == nee[j]){
+                i++;
+                j++;
             }
 
-            if(j == m) { // if j reaches length of needle then we return index of first occurrence of needle. 
-                return i - m + 1;
+            if(j == m) return i-j;
+
+            else if(i < n && h[i] != nee[j]) {
+
+                if(j != 0) {
+                    j = lps[j-1];
+                } else {
+                    i++;
+                }
             }
         }
 
