@@ -33,9 +33,9 @@ public:
         i = 0;
         int j = 0;
 
-        while(i < n){
+        while(i < n) {
 
-            if(h[i] == nee[j]){
+            if(h[i] == nee[j]) {
                 i++;
                 j++;
             }
