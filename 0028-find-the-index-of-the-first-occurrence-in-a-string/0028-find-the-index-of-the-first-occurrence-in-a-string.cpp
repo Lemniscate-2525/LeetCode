@@ -15,6 +15,7 @@ public:
         while(i < m) {  // for loop won't work here as we need i++ only in case 3. 
 
             if(nee[i] == nee[len]) {
+                
                 lps[i] = len + 1;
                 i++;
                 len++;
