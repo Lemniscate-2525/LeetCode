@@ -3,9 +3,9 @@ public:
 
     int val(char ch) { // fn to assign int vals to characters.
 
-        return ch == 'A' ? 1 :
-               ch == 'C' ? 2 :
-               ch == 'G' ? 3 : 4; 
+        return ch == 'A' ? 0 :
+               ch == 'C' ? 1 :
+               ch == 'G' ? 2 : 3; 
     }
 
     vector<string> findRepeatedDnaSequences(string s) {
@@ -14,19 +14,19 @@ public:
 
         // To get new pattern, we can roll the pattern by doing the usual. 
 
-        unordered_set<long long> seen;
-        unordered_set<long long> repeated;
+        unordered_set<int> seen;
+        unordered_set<int> repeated;
 
         vector<string> ans;
 
         int n = s.size();
 
         int m = 10;
-        int b = 10;
+        int b = 4;
 
         if(n < m) return {};
 
-        const long long mod = 10e9 + 7;
+        const long long mod = 1e9 + 7;
 
         long long highest_power = 1;
         long long oh = 0;
@@ -39,7 +39,7 @@ public:
             oh = (oh*b + val(s[i])) % mod;
         }
 
-        seen.insert(oh);
+        seen.insert(oh);  
 
         for(int i=1; i<n-m+1; i++) { // hash of all windows from i=1 ---> n-m+1.
 
@@ -53,12 +53,12 @@ public:
 
             if(seen.count(oh)) {
 
-                if(!repeated.count(oh)){
+                if(!repeated.count(oh)) {
                     ans.push_back(s.substr(i, m));
                     repeated.insert(oh);
                 }
-
             }
+
             else {
                 seen.insert(oh);
             }
