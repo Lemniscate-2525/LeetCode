@@ -26,30 +26,26 @@ public:
 
         if(n < m) return {};
 
-        const long long mod = 1e9 + 7;
-
         long long highest_power = 1;
         long long oh = 0;
 
         for(int i=0; i<9; i++) { // calculating highest mult power.
-            highest_power = (highest_power * b) % mod; 
+            highest_power *= b;
         }
 
         for(int i=0; i<m; i++){ // hash of first window. 
-            oh = (oh*b + val(s[i])) % mod;
+            oh = oh*b + val(s[i]); 
         }
 
         seen.insert(oh);  
 
         for(int i=1; i<n-m+1; i++) { // hash of all windows from i=1 ---> n-m+1.
 
-            oh = (oh - val(s[i-1]) * highest_power) % mod; // if i is starting character of curr window then outgoing character will be one previous ie. i-1. 
+            oh = oh - val(s[i-1]) * highest_power; // if i is starting character of curr window then outgoing character will be one previous ie. i-1. 
 
-            if(oh < 0) oh += mod;
+            oh *= b;
 
-            oh = (oh * b) % mod;
-
-            oh = (oh + val(s[i+m-1])) % mod; // incoming character will be at i+m-1
+            oh += val(s[i+m-1]); // incoming character will be at i+m-1
 
             if(seen.count(oh)) {
 
