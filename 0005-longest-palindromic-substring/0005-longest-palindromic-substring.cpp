@@ -8,7 +8,7 @@ public:
             t += "#";
             t += ch;
         }
-// Manacher's Algorithm. 
+                    // Manacher's Algorithm. 
         t += "#$";
 
         int n = t.size();
@@ -46,7 +46,6 @@ public:
         }
 
         int start = (c-ml) / 2;
-
         return s.substr(start, ml);
     }
 };
