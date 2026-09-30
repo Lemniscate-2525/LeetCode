@@ -8,7 +8,7 @@ public:
         int r = 0;
 
         double ma = INT_MIN;
-        int sum = 0;
+        double sum = 0;
 
         while(r < n) {
 
@@ -16,7 +16,7 @@ public:
             
             if(r-l+1 == k) {
 
-                double avg = sum/(double)k;
+                double avg = sum/k;
                 ma = max(avg, ma);
 
                 sum -= arr[l];
