@@ -5,7 +5,7 @@ public :
         return ch - 'a' + 1;
     }
 
-    string check(string &s, int len){
+    string check(string &s, int len) {
 
         unordered_map<unsigned long long, int> seen;
 
