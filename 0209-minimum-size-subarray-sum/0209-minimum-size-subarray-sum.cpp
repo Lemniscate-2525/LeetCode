@@ -18,7 +18,7 @@ public:
 
             sum += arr[r];
            
-            while(sum >= k) {
+            while(sum >= k) { // shrink when valid, usually opposite to what we do because we want a smaller window, so we shrink in search of a smaller window still satisfying constraints.
 
                 minlen = min(minlen, r-l+1);
                 sum -= arr[l];
@@ -28,7 +28,7 @@ public:
             r++;
         }
 
-        return minlen == INT_MAX ? 0 : minlen;
+        return minlen == INT_MAX ? 0 : minlen;  // if by chance minm length dosen't get updated from INT_MAX it means we don't have a valid sum upto our target here, so we return 0, else we return the obtained val of minlen.
 
     }
 };
