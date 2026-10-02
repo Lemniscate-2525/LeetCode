@@ -15,12 +15,10 @@ public:
             if(arr[r] == 0)  z++;
 
                 while(z > k) {
-                    if(arr[l] == 0) {
-                        z--;
-                    }
-                
+
+                    if(arr[l] == 0) z--;
+                    
                     l++;
-     
                 }
 
             maxlen = max(maxlen, r-l+1);
