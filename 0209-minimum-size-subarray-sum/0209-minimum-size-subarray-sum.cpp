@@ -9,6 +9,7 @@ public:
 
         int tar = k;
         int sum = 0;
+
         int minlen = INT_MAX;
 
         while(r < n) {
@@ -24,9 +25,7 @@ public:
                 l++;
 
             }
-
             r++;
-
         }
 
         return minlen == INT_MAX ? 0 : minlen;
