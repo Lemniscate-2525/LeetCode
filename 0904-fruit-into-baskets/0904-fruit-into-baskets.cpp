@@ -1,7 +1,7 @@
 class Solution {
 public:
     int totalFruit(vector<int>& arr) {
-// longest continuous subarr with k distinct elements. 
+// longest subarr having at most k distinct elements. 
         int n = arr.size();
 
         int l = 0;
