@@ -3,7 +3,7 @@ public:
 
  // no of subarrays with sum exactly goal = no of subarrays with sum at msot goal - no of subarrays with sum at most goal - 1
 
-    int atmostk(vector<int>& arr, int k) {
+    long long atmostk(vector<int>& arr, int k) {
 
         if(k < 0) return 0; // subarr is binary so target goal/sum can never be negative. 
 
