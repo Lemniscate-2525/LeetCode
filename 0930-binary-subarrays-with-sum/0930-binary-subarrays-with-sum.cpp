@@ -5,11 +5,11 @@ public:
 
     int atmostk(vector<int>& arr, int k) {
 
-        if(k < 0) return 0;
+        if(k < 0) return 0; // subarr is binary so target goal/sum can never be negative. 
 
         int n = arr.size();
 
-        int maxcnt = 0;
+        long long scnt = 0;
         int s = 0;
 
         int l = 0;
@@ -26,12 +26,12 @@ public:
 
             }
 
-            maxcnt += (r-l+1);
+            scnt += (r-l+1);
             r++;
 
         }
 
-        return maxcnt;
+        return scnt;
     }
 
     int numSubarraysWithSum(vector<int>& arr, int goal) {
