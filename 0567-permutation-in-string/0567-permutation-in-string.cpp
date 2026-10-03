@@ -17,16 +17,16 @@ public:
 
         while(r < n) {
 
-            f2[s2[r] - 'a']++;
+            f2[s2[r] - 'a']++; // freq signature of windows in s2.
 
-            if(r-l+1 > m) {
+            if(r-l+1 > m) {    // if window size exceeds len of string s1, we trim from left.
                 f2[s2[l] - 'a']--;
                 l++;
             }
 
             r++;
 
-            if(f1 == f2) return true;
+            if(f1 == f2) return true; // if at any point the freq signature of the original string s1 is equal to the freq signature of any valid sized window in s2, we have a valid permutation match. 
 
         }
 
