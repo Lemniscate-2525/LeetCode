@@ -37,7 +37,7 @@ public:
             while(f == req) { // window validity if cnt of req elem and formed elem is equal.
 
                 if(r-l+1 < mini) { // size of curr valid window smaller than prev globally smallest valid window.
-                    mini = min(mini, r-l+1);
+                    mini = r-l+1;
                     st = l; // curr valid window might be the globally shortestwe find, so we store it's starting point to form ans substring later.
                 }
 
