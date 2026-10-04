@@ -12,17 +12,16 @@ public:
 
         int st = 0;
 
-        int mini = INT_MAX;
         int f = 0;
+        int req = 0;
+
+        int mini = INT_MAX;
 
         vector<int> need(256, 0);
         vector<int> have(256, 0);
 
-        for(char ch : t) {
-            need[ch]++;
-        }
-
-        int req = 0;
+        for(char ch : t) need[ch]++;
+        
 
         for(int i=0; i<256; i++) {
             if(need[i] > 0) req++;
@@ -32,7 +31,7 @@ public:
 
             have[s[r]]++;
 
-            if(need[s[r]] > 0 && have[s[r]] == need[s[r]]){
+            if(have[s[r]] == need[s[r]]){
                 f++;
             }
 
