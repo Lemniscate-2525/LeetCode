@@ -35,18 +35,18 @@ public:
                 f++;
             }
 
-            while(f == req) {
+            while(f == req) { // window validity.
 
-                if(r-l+1 < mini){
+                if(r-l+1 < mini) { // size of curr valid window smaller than prev globally smallest valid window.
                     mini = min(mini, r-l+1);
                     st = l;
                 }
 
-                have[s[l]]--;
+                have[s[l]]--; // shrinking window from left
 
-                if(need[s[l]] > 0 && have[s[l]] < need[s[l]]) f--;
+                if(need[s[l]] > 0 && have[s[l]] < need[s[l]]) f--; // if at s[l] we had an elem which we just removed from the have arr, if the freq of needing that elem ie it's freq in t is greatee than it's freq in the have arr it means the we need too reduce the elem we were able to form by 1.  
 
-                l++;
+                l++; // moving l pointer forward to shrink the window. 
 
             }
             
