@@ -10,7 +10,7 @@ public:
         p.resize(n+1);
         p[0] = 0;
 
-        for(int i=1; i<n+1; i++){
+        for(int i=1; i<n+1; i++) {
             p[i] = p[i-1] + arr[i-1];
         }
     }
