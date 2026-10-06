@@ -8,20 +8,20 @@ public:
         mpp[0] = -1;
 
         int maxlen = 0;
-        int sum = 0;
+        int sum = 0; // cumulative sum.
 
         for(int i=0; i<n; i++) {
 
             if(arr[i] == 0) sum--;
             if(arr[i] == 1) sum++;
 
-            if(mpp.count(sum)) {
+            if(mpp.count(sum)) {  
 
-                maxlen = max(maxlen, i-mpp[sum]);
+                maxlen = max(maxlen, i-mpp[sum]); // if cumulative sum we've calculated till now occurs for the first time, then maxlen will be updated. This means that from i(curr ind) till the index we get cumulative sum as the exact sum that we've calculated then bw those indices the cnt of 0 and 1 is the same, hence we found a valid subarr and we update it's length. 
 
             } else {
 
-            mpp[sum] = i;
+            mpp[sum] = i; // if cumulative sum calculated till now has not been seen before then we don't have balance yet, so we store the sum at the respective index and move forward. 
 
             }
         }
