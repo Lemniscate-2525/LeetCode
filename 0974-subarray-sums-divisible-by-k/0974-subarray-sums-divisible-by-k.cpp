@@ -7,7 +7,7 @@ public:
         int sum = 0;
         int ans = 0;
 
-        unordered_map<int, int> mpp;
+        unordered_map<int, int> mpp; // freq map; (remainder, freq)
         mpp[0] = 1;
 
         for(int i=0; i<n; i++) {
