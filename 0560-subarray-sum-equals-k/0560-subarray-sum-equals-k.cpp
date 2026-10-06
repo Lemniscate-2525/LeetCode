@@ -3,7 +3,7 @@ public:
     int subarraySum(vector<int>& arr, int k) {
 
         int n = arr.size();
-        unordered_map<int,int> mpp;
+        unordered_map<int, int> mpp;
 
         mpp[0] = 1;
 
@@ -11,6 +11,7 @@ public:
         int ans = 0;
 
         for(int i=0; i<n; i++) {
+
             p += arr[i];
 
             int need = p - k;
