@@ -1,43 +1,30 @@
 class Solution {
 public:
-
-// no of subarrays with sum exactly goal = no of subarrays with sum at msot goal - no of subarrays with sum at most goal - 1
-
-    long long atmostk(vector<int>& arr, int k) {
-
-        if(k < 0) return 0; // subarr is binary so target goal/sum can never be negative. 
+    int numSubarraysWithSum(vector<int>& arr, int k) {
 
         int n = arr.size();
 
-        long long scnt = 0;
-        int s = 0;
+        unordered_map<int, int> mpp; 
+        mpp[0] = 1;
 
-        int l = 0;
-        int r = 0;
+        int ps = 0;
+        int ans = 0;
 
-        while(r < n) {
+        for(int i=0; i<n; i++) {
 
-            s += arr[r];
+            ps += arr[i];
 
-            while(s > k) {
+            int need = ps - k;
 
-                s -= arr[l];
-                l++;
-
+            if(mpp.count(need)) {
+                ans += mpp[need];
             }
 
-            scnt += (r-l+1);
-            r++;
-
+            mpp[ps]++;
         }
 
-        return scnt;
-    }
-
-    int numSubarraysWithSum(vector<int>& arr, int goal) {
-
-        return atmostk(arr, goal) - atmostk(arr, goal-1);
-
+        return ans;
+        
     }
 };
 
