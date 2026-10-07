@@ -1,7 +1,7 @@
 class Solution {
 public:
 
- // no of subarrays with sum exactly goal = no of subarrays with sum at msot goal - no of subarrays with sum at most goal - 1
+// no of subarrays with sum exactly goal = no of subarrays with sum at msot goal - no of subarrays with sum at most goal - 1
 
     long long atmostk(vector<int>& arr, int k) {
 
