@@ -5,34 +5,31 @@ public: // keep elem with sum ts-x.
 
         int n = arr.size();
 
-        if(arr[0] > x && arr[n-1] > x) return -1;
-        if(arr[0] == x || arr[n-1] == x) return 1;
-
         int s = accumulate(arr.begin(), arr.end(), 0);
         int k = s - x;
 
         if(k < 0) return -1;
         if(k == 0) return n;
 
-        int l = 0;
-        int r = 0;
+        unordered_map<int, int> mpp;
+        mpp[0] = 0;
 
-        int cs = 0;
+        int ps = 0;
         int maxlen = -1;
 
-        while(r < n) {
+        for(int i=0; i<n; i++) {
 
-            cs += arr[r];
+            ps += arr[i];
 
-            while(l <= r  && cs > k) {
-                cs -= arr[l++];
+            int need = ps - k;
+
+            if(mpp.count(need)) {
+                maxlen = max(maxlen, i + 1 - mpp[need]);
             }
 
-            if(cs == k) {
-                maxlen = max(maxlen, r-l+1);
+            if(!mpp.count(ps)) {
+                mpp[ps] = i + 1;
             }
-
-            r++;
         }
 
         return maxlen == -1 ? -1 : n - maxlen;
