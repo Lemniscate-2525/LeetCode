@@ -3,26 +3,26 @@ public:
 
     vector<vector<int>> ps;
 
-    NumMatrix(vector<vector<int>>& p) {
+    NumMatrix(vector<vector<int>>& mat) {
 
-        int m = p.size();
-        int n = p[0].size();
+        int m = mat.size();
+        int n = mat[0].size();
 
-        ps.assign(m+1, vector<int>(n+1, 0));
+        ps.assign(m+1, vector<int> (n+1, 0));
 
         for(int i=1; i<=m; i++) {
             for(int j=1; j<=n; j++) {
 
-                ps[i][j] = p[i-1][j-1] + ps[i][j-1] + ps[i-1][j] - ps[i-1][j-1];
+                ps[i][j] = mat[i-1][j-1] + ps[i][j-1] + ps[i-1][j] - ps[i-1][j-1];
 
             }
-        } 
-
+        }
     }
     
     int sumRegion(int r1, int c1, int r2, int c2) {
-        
+
         return ps[r2+1][c2+1] - ps[r1][c2+1] - ps[r2+1][c1] + ps[r1][c1];
+        
     }
 };
 
