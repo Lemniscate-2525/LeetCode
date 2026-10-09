@@ -1,22 +1,21 @@
 class Solution {
-private:
 
+private:
     bool check_vowel(char ch) {
         return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
     }
 
 public:
-
     int findTheLongestSubstring(string s) {
         
         int n = s.size();
 
-        unordered_map<char, int> vp = {{'a', 0}, {'e', 1}, {'i', 2}, {'o', 3}, {'u', 4}};
+        unordered_map<char, int> vp = {{'a',0},{'e',1},{'i',2},{'o',3},{'u',4}};
         unordered_map<int, int> mpp;
 
         mpp[0] = -1;
 
-        int curr = 0;
+        int curr = 0; // curr never changes in case of a non-vowel; it's specific bit is toggled iff we see a vowel. 
         int maxlen = 0;
 
         for(int i=0; i<n; i++) {
@@ -28,14 +27,11 @@ public:
             if(mpp.count(curr)) {
                 maxlen = max(maxlen, i - mpp[curr]);
             } else {
-                mpp[curr] = i;
+                mpp[curr] = i; // first occ of curr in map, don't overwrite.
             }
         }
 
-
         return maxlen;
-        
-
 
     }
 };
