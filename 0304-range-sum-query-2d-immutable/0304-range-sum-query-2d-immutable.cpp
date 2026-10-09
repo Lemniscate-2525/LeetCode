@@ -2,7 +2,6 @@ class NumMatrix {
 public:
 
     vector<vector<int>> ps;
-
     NumMatrix(vector<vector<int>>& mat) {
 
         int m = mat.size();
@@ -17,6 +16,7 @@ public:
 
             }
         }
+        
     }
     
     int sumRegion(int r1, int c1, int r2, int c2) {
